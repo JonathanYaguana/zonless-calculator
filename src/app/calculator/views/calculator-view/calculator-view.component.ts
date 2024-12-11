@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { CalculatorBottomComponent } from "../../components/calculator-bottom/calculator-bottom.component";
+import { CalculatorComponent } from '@/calculator/components/calculator/calculator.component';
 
 @Component({
   selector: 'calculator-view',
   standalone: true,
-  imports: [CalculatorBottomComponent],
+  imports: [CalculatorComponent],
   templateUrl: './calculator-view.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
