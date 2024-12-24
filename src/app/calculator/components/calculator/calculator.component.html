@@ -8,33 +8,33 @@
 </div>
 <div class="w-full bg-gradient-to-b from-indigo-400 to-indigo-500">
   <div class="flex w-full">
-    <calculator-bottom>C</calculator-bottom>
-    <calculator-bottom>+</calculator-bottom>
-    <calculator-bottom>%</calculator-bottom>
-    <calculator-bottom isComand>÷</calculator-bottom>
+    <calculator-bottom (onClick)="handleClick($event)">C</calculator-bottom>
+    <calculator-bottom (onClick)="handleClick($event)" >+/-</calculator-bottom>
+    <calculator-bottom (onClick)="handleClick($event)" >%</calculator-bottom>
+    <calculator-bottom (onClick)="handleClick($event)"  isComand>÷</calculator-bottom>
   </div>
   <div class="flex w-full">
-    <calculator-bottom>7</calculator-bottom>
-    <calculator-bottom>8</calculator-bottom>
-    <calculator-bottom>9</calculator-bottom>
-    <calculator-bottom isComand>x</calculator-bottom>
+    <calculator-bottom (onClick)="handleClick($event)" >7</calculator-bottom>
+    <calculator-bottom (onClick)="handleClick($event)" >8</calculator-bottom>
+    <calculator-bottom (onClick)="handleClick($event)" >9</calculator-bottom>
+    <calculator-bottom (onClick)="handleClick($event)"  isComand>x</calculator-bottom>
 
     </div>
     <div class="flex w-full">
-      <calculator-bottom>4</calculator-bottom>
-      <calculator-bottom>5</calculator-bottom>
-      <calculator-bottom>6</calculator-bottom>
-      <calculator-bottom>-</calculator-bottom>
+      <calculator-bottom (onClick)="handleClick($event)" >4</calculator-bottom>
+      <calculator-bottom (onClick)="handleClick($event)" >5</calculator-bottom>
+      <calculator-bottom (onClick)="handleClick($event)" >6</calculator-bottom>
+      <calculator-bottom (onClick)="handleClick($event)" isComand>-</calculator-bottom>
     </div>
     <div class="flex w-full">
-      <calculator-bottom>1</calculator-bottom>
-      <calculator-bottom>2</calculator-bottom>
-      <calculator-bottom>3</calculator-bottom>
-      <calculator-bottom>+</calculator-bottom>
+      <calculator-bottom (onClick)="handleClick($event)" >1</calculator-bottom>
+      <calculator-bottom (onClick)="handleClick($event)" >2</calculator-bottom>
+      <calculator-bottom (onClick)="handleClick($event)" >3</calculator-bottom>
+      <calculator-bottom (onClick)="handleClick($event)" isComand>+</calculator-bottom>
     </div>
     <div class="flex w-full">
-      <calculator-bottom>0</calculator-bottom>
-      <calculator-bottom>.</calculator-bottom>
-      <calculator-bottom isComand isDobleSize>=</calculator-bottom>
+      <calculator-bottom (onClick)="handleClick($event)" >0</calculator-bottom>
+      <calculator-bottom (onClick)="handleClick($event)" >.</calculator-bottom>
+      <calculator-bottom (onClick)="handleClick($event)"  isComand isDobleSize>=</calculator-bottom>
     </div>
   </div>

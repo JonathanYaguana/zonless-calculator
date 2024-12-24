@@ -1,7 +1,11 @@
-button{
+button {
   @apply w-full h-16 outline-none focus:outline-none hover:bg-indigo-700 hover:bg-opacity-20 text-white text-xl font-light ;
 }
 
-.is-comand{
+.is-command {
   @apply bg-indigo-700 opacity-20 ;
+}
+
+.is-pressed {
+  @apply bg-indigo-800 opacity-20 ;
 }
