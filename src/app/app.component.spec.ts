@@ -43,4 +43,36 @@ describe('AppComponent', () => {
     // const compiled = fixture.nativeElement as HTMLElement;
     // expect(compiled.querySelector('h1')?.textContent).toContain('Hello, zoneless-calculator');
   });
+
+  it('should render router-outlet wrapped with css classes', () => {
+
+    const divElement = compiled.querySelector('div');
+
+    const mustHaveClasses = 'min-w-screen min-h-screen bg-gray-100 flex items-center justify-center px-5 py-5'
+    .split(' ');
+
+    expect(divElement).not.toBeNull();
+
+    // console.log(divElement?.classList.value);
+
+    const divClasses = divElement?.classList.value.split(' ');
+
+    mustHaveClasses.forEach((className) => {
+      expect(divClasses).toContain(className);
+    });
+  });
+
+  it("should contarin the 'buy me a beer' link ", () => {
+
+    const anchoElement = compiled.querySelector('a');
+
+    expect(anchoElement).not.toBeNull();
+
+    expect(anchoElement?.title).toBe('Buy me a beer');
+
+    expect(anchoElement?.getAttribute('href')).toBe('https://www.buymeacoffee.com/scottwindon');
+
+
+  });
+
 });
