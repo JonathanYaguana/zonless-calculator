@@ -40,4 +40,83 @@ describe('CalculatorService', () => {
 
   });
 
+  it('should update resultText with number input', () => {
+    service.constructNumber('1');
+    expect(service.resultText()).toBe('1');
+
+    service.constructNumber('2');
+    expect(service.resultText()).toBe('12');
+  });
+
+  it('sould handle operators correctly', () => {
+    service.constructNumber('1');
+    service.constructNumber('+');
+
+    expect(service.lastOperator()).toBe('+');
+    expect(service.subResultText()).toBe('1');
+    expect(service.resultText()).toBe('0');
+
+  });
+
+  it('should calculate result correctly for addition', () => {
+    service.constructNumber('1');
+    service.constructNumber('+');
+    service.constructNumber('4');
+    service.constructNumber('=');
+
+    expect(service.resultText()).toBe('5');
+
+  });
+
+  it('should calculate result correctly for substraction', () => {
+    service.constructNumber('5');
+    service.constructNumber('-');
+    service.constructNumber('4');
+    service.constructNumber('=');
+
+    expect(service.resultText()).toBe('1');
+
+  });
+
+  it('should calculate result correctly for multiplication', () => {
+    service.constructNumber('2');
+    service.constructNumber('*');
+    service.constructNumber('4');
+    service.constructNumber('=');
+
+    expect(service.resultText()).toBe('8');
+
+  });
+
+  it('should calculate result correctly for divition', () => {
+    service.constructNumber('6');
+    service.constructNumber('/');
+    service.constructNumber('2');
+    service.constructNumber('=');
+
+    expect(service.resultText()).toBe('3');
+
+  });
+
+  it('should handle decimal point correctly', () => {
+    service.constructNumber('1');
+    service.constructNumber('.');
+    service.constructNumber('6');
+
+    expect(service.resultText()).toBe('1.6');
+
+    service.constructNumber('.');
+    expect(service.resultText()).toBe('1.6');
+  });
+
+  it('should handle decimal point correctly starting with zero', () => {
+    service.constructNumber('0');
+    service.constructNumber('.');
+    service.constructNumber('.');
+    service.constructNumber('.');
+    service.constructNumber('.');
+    service.constructNumber('0');
+
+    expect(service.resultText()).toBe('0.0');
+  });
 });
