@@ -39,17 +39,17 @@ export class CalculatorService {
     // TODO: Revisar cuando tengamos numeros negativos
     if ( value === 'Backspace') {
       if ( this.resultText() === '0' ) return;
-      // if ( this.resultText().length === 1 ) {
-      //   this.resultText.set('0')
-      //   return;
-      // }
       if ( this.resultText().includes('-') && this.resultText().length === 2 ) {
         this.resultText.set('0');
         return;
       }
 
-      this.resultText.update( (v) => v.slice(0, -1) );
+      if (this.resultText().length === 1) {
+        this.resultText.set('0');
+        return;
+      }
 
+      this.resultText.update( (v) => v.slice(0, -1) );
       return;
     }
 

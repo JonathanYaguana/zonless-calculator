@@ -89,6 +89,7 @@ describe('CalculatorService', () => {
   });
 
   it('should calculate result correctly for divition', () => {
+
     service.constructNumber('6');
     service.constructNumber('/');
     service.constructNumber('2');
@@ -99,6 +100,7 @@ describe('CalculatorService', () => {
   });
 
   it('should handle decimal point correctly', () => {
+
     service.constructNumber('1');
     service.constructNumber('.');
     service.constructNumber('6');
@@ -110,6 +112,7 @@ describe('CalculatorService', () => {
   });
 
   it('should handle decimal point correctly starting with zero', () => {
+
     service.constructNumber('0');
     service.constructNumber('.');
     service.constructNumber('.');
@@ -119,4 +122,42 @@ describe('CalculatorService', () => {
 
     expect(service.resultText()).toBe('0.0');
   });
+
+  it ('sould handle sing change correctly', () => {
+    service.constructNumber('1');
+    service.constructNumber('+/-');
+
+    expect(service.resultText()).toBe('-1');
+
+    service.constructNumber('+/-');
+    expect(service.resultText()).toBe('1');
+
+  });
+
+  it ('sould handle backspace correctly', () => {
+    service.resultText.set('123');
+
+    service.constructNumber('Backspace');
+    expect(service.resultText()).toBe('12');
+
+    service.constructNumber('Backspace');
+    expect(service.resultText()).toBe('1');
+
+    service.constructNumber('Backspace');
+    expect(service.resultText()).toBe('0');
+  });
+
+  it('should handle max leagth correctly', () => {
+    for (let i = 0; i < 10; i++){
+      service.constructNumber('1');
+    }
+
+    expect(service.resultText().length).toBe(10);
+    service.constructNumber('1');
+    expect(service.resultText().length).toBe(10);
+
+  });
+
+  
+
 });
