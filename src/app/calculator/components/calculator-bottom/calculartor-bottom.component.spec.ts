@@ -1,5 +1,17 @@
+import { Component } from '@angular/core';
 import { CalculatorBottomComponent } from './calculator-bottom.component';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+@Component({
+  standalone: true,
+  imports: [CalculatorBottomComponent],
+  template: `
+    <calculator-bottom>
+      <span class="projected-content underline">Test content</span>
+    </calculator-bottom>
+  `,
+})
+class TestHostComponent {}
 
 describe('CalculatorBottomComponent', () => {
 let fixture: ComponentFixture<CalculatorBottomComponent>;
@@ -59,4 +71,24 @@ let component: CalculatorBottomComponent;
       done();
     }, 100);
   });
+
+  it('should not set isPressed to true if  key is not matching', () =>{
+
+    component.contentValue()!.nativeElement.innerText = '1';
+    component.keyboardPressedStyl('2');
+
+    expect(component.isPressed()).toBeFalse();
+
+  });
+
+  it('should display project content', () => {
+    const testHostFixture = TestBed.createComponent(TestHostComponent);
+
+    const compiled = testHostFixture.nativeElement as HTMLDivElement;
+    const projectedContent = compiled.querySelector('.projected-content');
+
+    expect(projectedContent).not.toBeNull();
+    expect(projectedContent?.classList.contains('underline')).toBeTrue();
+  });
+
 });
