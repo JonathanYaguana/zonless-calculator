@@ -56,8 +56,6 @@ let mockCalculatorService: MockCalculatorService;
 
     fixture.detectChanges();
 
-    console.log(compiled);
-
     expect(compiled.querySelector('span')?.innerText)
 
     expect(component.resultText()).toBe('123');
@@ -81,5 +79,26 @@ let mockCalculatorService: MockCalculatorService;
     expect(butttons[2].textContent).toBe('%');
     expect(butttons[3].textContent).toBe('÷');
 
+  });
+
+  it('should handle keyboard events correctly', () => {
+    const eventEnter = new KeyboardEvent('keyup', { key: 'Enter' });
+    document.dispatchEvent(eventEnter);
+    expect(mockCalculatorService.constructNumber).toHaveBeenCalledWith('=');
+
+    const eventESC = new KeyboardEvent('keyup', { key: 'Escape' });
+    document.dispatchEvent(eventESC);
+    expect(mockCalculatorService.constructNumber).toHaveBeenCalledWith('C');
+  });
+
+  it('should display result text correctly', () => {
+    mockCalculatorService.resultText.and.returnValue('123');
+    mockCalculatorService.subResultText.and.returnValue('987');
+    mockCalculatorService.lastOperator.and.returnValue('-');
+    fixture.autoDetectChanges();
+
+    expect(component.resultText()).toBe('123');
+    //console.log(compiled.querySelector('#sub-result'));
+    expect(compiled.querySelector('#sub-result')?.textContent).toContain('987 -');
   });
 });
